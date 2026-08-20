@@ -1,0 +1,14 @@
+# Phishing Email Forensics Analyzer -- dependencies
+# IT 360 Final Project -- Tyler and Sam
+#
+# The core analyzer runs on the Python standard library alone. Everything
+# below is optional and enables an additional capability. The tool degrades
+# gracefully if any of them are missing.
+
+# Enables the AI-generated summary (ai_summary.py).
+# Without this, all forensic analysis still runs; only the summary is skipped.
+anthropic>=0.40.0
+
+# Enables parsing Outlook .msg files (email_parser.py).
+# Without this, .eml files are still fully supported.
+extract-msg>=0.48.0
