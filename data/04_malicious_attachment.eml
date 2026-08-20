@@ -1,0 +1,29 @@
+Return-Path: <billing@invoices.example.invalid>
+Received: from relay.example.invalid (relay.example.invalid [203.0.113.91])
+ by mx.recipient.example.net with ESMTP id mno345
+ for <analyst@recipient.example.net>; Thu, 14 Aug 2025 06:20:11 +0000
+Authentication-Results: mx.recipient.example.net;
+ spf=softfail smtp.mailfrom=invoices.example.invalid;
+ dkim=none;
+ dmarc=fail header.from=invoices.example.invalid
+Message-ID: <inv-2025-08-14-0031@invoices.example.invalid>
+Date: Thu, 14 Aug 2025 06:20:08 +0000
+From: "Billing Department" <billing@invoices.example.invalid>
+To: analyst@recipient.example.net
+Subject: Invoice attached
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="bnd_004"
+
+--bnd_004
+Content-Type: text/plain; charset="utf-8"
+
+The invoice is attached.
+
+--bnd_004
+Content-Type: application/pdf; name="invoice_2025.pdf.exe"
+Content-Disposition: attachment; filename="invoice_2025.pdf.exe"
+Content-Transfer-Encoding: base64
+
+TVqQAAMAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+
+--bnd_004--

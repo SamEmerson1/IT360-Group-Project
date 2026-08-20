@@ -1,0 +1,33 @@
+Return-Path: <service@paypa1.com>
+Received: from mail.paypa1.com (mail.paypa1.com [198.51.100.77])
+ by mx.recipient.example.net with ESMTP id jkl012
+ for <analyst@recipient.example.net>; Wed, 13 Aug 2025 11:02:44 +0000
+Authentication-Results: mx.recipient.example.net;
+ spf=pass smtp.mailfrom=paypa1.com;
+ dkim=pass header.d=paypa1.com;
+ dmarc=fail header.from=paypa1.com
+Message-ID: <acct-notice-55821@paypa1.com>
+Date: Wed, 13 Aug 2025 11:02:40 +0000
+From: "Account Services" <service@paypa1.com>
+To: analyst@recipient.example.net
+Subject: Notice regarding your account
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="bnd_003"
+
+--bnd_003
+Content-Type: text/plain; charset="utf-8"
+
+A notice is available for your account.
+
+Review it at https://paypa1.com/account/verify/session
+
+--bnd_003
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>A notice is available for your account.</p>
+<p><a href="https://paypa1.com/account/verify/session">https://www.paypal.com/signin</a></p>
+<p><a href="http://198.51.100.77/login">Alternate link</a></p>
+</body></html>
+
+--bnd_003--

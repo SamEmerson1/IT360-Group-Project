@@ -1,0 +1,22 @@
+Return-Path: <bounce@mailer.example.invalid>
+Received: from unknown-host.example.invalid (unknown-host.example.invalid [203.0.113.55])
+ by mx.recipient.example.net with ESMTP id ghi789
+ for <analyst@recipient.example.net>; Wed, 13 Aug 2025 03:41:08 +0000
+Authentication-Results: mx.recipient.example.net;
+ spf=fail smtp.mailfrom=mailer.example.invalid;
+ dkim=none;
+ dmarc=fail header.from=gmail.com
+Message-ID: <9182736455@mailer.example.invalid>
+Date: Wed, 13 Aug 2025 03:41:05 +0000
+From: "IT Support Team <helpdesk@example.com>" <corp.it.dept.9421@gmail.com>
+Reply-To: recovery-desk@example.invalid
+To: analyst@recipient.example.net
+Subject: Action required on your account
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Your account requires verification.
+
+Please reply to this message to continue.
+
+IT Support

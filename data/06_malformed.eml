@@ -1,0 +1,23 @@
+Received: garbage-that-is-not-a-valid-received-header
+Received: from
+From: "First Sender" <one@example.invalid>
+From: "Second Sender" <two@example.invalid>
+Subject: Malformed test message
+Subject: Duplicate subject header
+Date: not-a-real-date
+To: analyst@recipient.example.net
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="bnd_006"
+
+--bnd_006
+Content-Type: text/plain; charset="definitely-not-a-charset"
+
+Body text with a bare link: http://198.51.100.200:9001/x
+
+--bnd_006
+Content-Type: application/octet-stream; name="empty.docx"
+Content-Disposition: attachment; filename="empty.docx"
+Content-Transfer-Encoding: base64
+
+
+--bnd_006

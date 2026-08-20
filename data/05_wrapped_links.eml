@@ -1,0 +1,22 @@
+Return-Path: <alerts@notify.example.net>
+Received: from smtp.example.net (smtp.example.net [192.0.2.200])
+ by mx.recipient.example.net with ESMTPS id pqr678
+ for <analyst@recipient.example.net>; Thu, 14 Aug 2025 14:55:30 +0000
+Authentication-Results: mx.recipient.example.net;
+ spf=pass smtp.mailfrom=notify.example.net;
+ dkim=pass header.d=notify.example.net;
+ dmarc=pass header.from=notify.example.net
+Message-ID: <alert-88213@notify.example.net>
+Date: Thu, 14 Aug 2025 14:55:28 +0000
+From: "Document Sharing" <alerts@notify.example.net>
+To: analyst@recipient.example.net
+Subject: A document was shared with you
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+
+<html><body>
+<p>A document has been shared with you.</p>
+<p><a href="https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs-review.tk%2Fopen%3Fid%3D8821&amp;data=05">Open document</a></p>
+<p>Backup: <a href="https://bit.ly/3xAmPl3">short link</a></p>
+<p>Mirror: <a href="https://docs.example.com@files.example.invalid:8443/get">mirror link</a></p>
+</body></html>
