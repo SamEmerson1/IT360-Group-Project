@@ -2,7 +2,7 @@
 
 **Phishing Email Forensics Analyzer**
 
-Tyler and Sam — IT 360 Final Project
+Tyler Lyons, Sam Emerson, and Vadim Korypaev — IT 360 Final Project
 
 > This is a working README. The project is in active development, so features, structure, and instructions will change as we build.
 
