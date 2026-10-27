@@ -89,7 +89,7 @@ def print_console_report(analysis, use_color=True):
     print()
     print(_c(line, "dim", use_color))
     print(_c("  PHISHING EMAIL FORENSICS ANALYZER", "bold", use_color))
-    print(_c("  IT 360 Final Project -- Tyler and Sam", "dim", use_color))
+    print(_c("  IT 360 Final Project -- Tyler, Sam and Vadim", "dim", use_color))
     print(_c(line, "dim", use_color))
     print()
 
