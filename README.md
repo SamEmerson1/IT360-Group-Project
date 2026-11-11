@@ -2,9 +2,7 @@
 
 **Phishing Email Forensics Analyzer**
 
-Tyler Lyons, Sam Emerson, and Vadim Korypaev — IT 360 Final Project
-
-> This is a working README. The project is in active development, so features, structure, and instructions will change as we build.
+IT 360 final project by Tyler Lyons, Sam Emerson, and Vadim Korypaev.
 
 ---
 
@@ -12,11 +10,11 @@ Tyler Lyons, Sam Emerson, and Vadim Korypaev — IT 360 Final Project
 
 A command-line tool that analyzes suspicious email files and produces a structured forensic report.
 
-Phishing is one of the most common ways attackers get into a network, and the evidence that proves it is sitting in the message itself — the headers, the links, the attachments. Our tool pulls that evidence out automatically and gives an analyst a clear summary instead of a raw email file.
+Phishing is one of the most common ways attackers get into a network, and the evidence for it is in the message itself: the headers, the links and the attachments. The tool extracts that evidence and gives an analyst a summary to work from instead of a raw email file.
 
-## What It Does
+## Features
 
-- Traces the message's delivery path through its headers to find where it really came from
+- Traces the message's delivery path through its headers to find where it came from
 - Checks sender authentication (SPF, DKIM, DMARC) and flags failures
 - Detects sender spoofing and lookalike domains
 - Extracts and defangs all URLs so they're safe to review
@@ -30,7 +28,6 @@ Phishing is one of the most common ways attackers get into a network, and the ev
 ```
 IT360-Group-Project/
 ├── src/                  # Tool source code
-├── docs/                 # Written report and supporting images
 ├── data/                 # Synthetic sample emails
 ├── .gitignore
 ├── LICENSE
@@ -63,7 +60,7 @@ export ANTHROPIC_API_KEY="your-key-here"      # macOS / Linux
 setx ANTHROPIC_API_KEY "your-key-here"        # Windows
 ```
 
-Without a key the tool runs normally and skips only the summary section.
+Without a key, the tool runs normally and skips only the summary section.
 
 ## Usage
 
@@ -89,7 +86,7 @@ python src/main.py --input data/03_lookalike_domain.eml --no-ai
 | `-q`, `--quiet` | Suppress console output |
 | `--no-color` | Disable ANSI color |
 
-**Exit codes:** `0` nothing flagged, `1` at least one message flagged SUSPICIOUS or MALICIOUS, `2` fatal error. This lets the tool be used in scripts and scheduled jobs.
+**Exit codes:** `0` nothing flagged, `1` at least one message flagged SUSPICIOUS or MALICIOUS, `2` fatal error. Scripts and scheduled jobs can branch on these codes.
 
 ## Module Layout
 
@@ -111,49 +108,28 @@ python src/main.py --input data/03_lookalike_domain.eml --no-ai
 
 Everything in `data/` is synthetic and made for testing. No real mail, personal information, or organizational data is in this repository.
 
-## Video Presentation
-
-*Link to be added before submission.*
-
 ---
 
-## Meeting the Assignment Requirements
+## Assignment Requirements
 
-The final project is worth 150 points across three deliverables. This section tracks how each one is being addressed.
+The final project is worth 150 points across three deliverables. The tables below show how the project addresses each one.
 
-### 1. Programming Project — 75 points
+### 1. Programming Project (75 points)
 
 | Graded On | Points | Our Approach |
 | --- | --- | --- |
-| Functionality | 45 | The tool performs a real forensic task — email artifact extraction and analysis — and is built to handle malformed or corrupt files without crashing. |
+| Functionality | 45 | The tool performs a forensic task (extracting and analyzing email artifacts) and handles malformed or corrupt files without crashing. |
 | Code Quality | 15 | Work is split into separate modules by function rather than one large script, with comments explaining the reasoning behind each analysis step. |
 | Repository & README | 15 | The repo follows the recommended folder structure. This README covers the overview, features, and setup instructions, and will link the video. |
 
-### 2. Written Report — 45 points
+### 2. Written Report (45 points)
 
 The report will be added to `docs/` as a PDF.
 
 | Graded On | Points | Our Approach |
 | --- | --- | --- |
 | Intro & Technical Details | 22 | Explains why phishing analysis is a relevant forensic problem, then walks through our language, library, and design choices and why we made them. |
-| Results & Lessons Learned | 23 | Shows real sample output from the tool, then reflects on what worked, what didn't, and what we'd build differently. |
-
-### 3. Video Presentation — 30 points
-
-| Graded On | Points | Our Approach |
-| --- | --- | --- |
-| Content & Clarity | 15 | A 10–15 minute walkthrough of the purpose, design, and results, planned out ahead of time rather than improvised. |
-| Tool Demo | 15 | A live run against a sample phishing email, rehearsed beforehand on a clean setup so the demo doesn't fail on a missing dependency. |
-
-### Submission Checklist
-
-- [x] Repository is public
-- [x] `src/` contains working, commented code
-- [x] `data/` contains synthetic sample evidence
-- [x] `requirements.txt`, `.gitignore`, and `LICENSE` present
-- [ ] `docs/final_report.pdf` uploaded
-- [ ] Video uploaded and linked in this README
-- [ ] Setup instructions tested on a clean machine
+| Results & Lessons Learned | 23 | Shows sample output from the tool, then covers what worked, what didn't, and what we'd build differently. |
 
 ---
 
@@ -161,20 +137,20 @@ The report will be added to `docs/` as a PDF.
 
 **This README and the source files in `src/` and `data/` were generated by Claude Opus 5 (Anthropic)** at our direction, then reviewed and adapted by us. Each source file carries an "AI GENERATION NOTICE" header stating this.
 
-AI is also used *inside* the tool, in `src/ai_summary.py`, to write a plain-language explanation of the results.
+AI is also used inside the tool, in `src/ai_summary.py`, to write a plain-language explanation of the results.
 
-**The boundary we drew, and why it matters:**
+**How the tool limits the AI model**
 
-The language model receives only the structured findings that the deterministic modules already produced. It never sees the raw email. It is not asked whether a message is malicious — `scoring.py` answers that by rule, before the AI module runs.
+The language model receives only the structured findings that the rule-based modules already produced. It never sees the raw email, and it is not asked whether a message is malicious: `scoring.py` decides that by rule before the AI module runs.
 
-Three reasons:
+We set it up this way for three reasons:
 
-1. **Reproducibility.** Findings and score are identical on every run. If a model made the determination, two runs on the same evidence could disagree, which is fatal to an evidentiary process.
+1. **Reproducibility.** Findings and score are identical on every run. If a model made the determination, two runs on the same evidence could disagree, and an evidentiary process needs the same result every time.
 2. **Explainability.** Every finding traces back to a named rule in the source. "The model thought it looked suspicious" is not defensible in an incident review.
-3. **Prompt injection resistance.** Phishing bodies are attacker-authored text. A model that both reads that text and influences the verdict can be attacked directly — the attacker simply writes instructions into the message. Passing only our own structured findings closes that path.
+3. **Prompt injection resistance.** Phishing email bodies are written by the attacker. If a model read that text and could influence the verdict, the attacker could write instructions to the model into the message. Our model sees only our structured findings and cannot change the score, so instructions hidden in an email cannot change the verdict.
 
-In short: **rules decide, AI explains.** The written report discusses this trade-off and its limitations in detail.
+The written report covers this design and its limitations in more detail.
 
 ## License
 
-MIT — see `LICENSE`.
+MIT License. See `LICENSE`.
