@@ -1,3 +1,7 @@
+# custom .gitignore for Python projects
+*.html
+*.eml
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
