@@ -110,7 +110,7 @@ Everything in `data/` is synthetic and made for testing. No real mail, personal 
 
 ---
 
-## Assignment Requirements
+# Assignment Requirements
 
 The final project is worth 150 points across three deliverables. The tables below show how the project addresses each one.
 
