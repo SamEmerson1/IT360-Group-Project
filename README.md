@@ -1,6 +1,6 @@
 # IT360-Group-Project
 
-**Phishing Email Forensics Analyzer**
+*Phishing Email Forensics Analyzer*
 
 IT 360 final project by Tyler Lyons, Sam Emerson, and Vadim Korypaev.
 
